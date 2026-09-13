@@ -31,6 +31,29 @@ section {
     padding: 1%;
 }
 
+/* Four tiles per row (About Me, Where I've Been), two on phones. Flex keeps
+   tiles of unequal height on a shared baseline, which grid.css's floats do not.
+   4 x 23.8% + 3 x 1.6% gap = 100%. */
+.tile-row {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 1.6%;
+}
+
+/* grid.css's .row clearfix would otherwise count as two flex items; both
+   classes are needed to outweigh `.row:before` / `.row:after`. */
+.row.tile-row::before,
+.row.tile-row::after {
+    display: none;
+}
+
+/* Shrink absorbs sub-pixel rounding on that exact 100%. */
+.tile-row > .col {
+    flex: 0 1 23.8%;
+    float: none;
+    margin-left: 0;
+}
+
 /* Headings */
 
 h1 {

@@ -2,20 +2,13 @@
    Loaded after style.css but before grid.css, so grid.css wins on .col sizing
    at equal specificity — rules here that need to beat it are scoped tighter. */
 
-/* Each .responsive-fix wrapper holds two tiles so they pair up on phones, and
-   each one restarts grid.css's `.col:first-child { margin-left: 0 }`. Adding
-   the gutter back at the seam gives 4 x 23.8% + 3 x 1.6% = 100%. */
-@media only screen and (min-width: 768px) {
-
-    .responsive-fix + .responsive-fix > .col:first-child {
-        margin-left: 1.6%;
-    }
-}
-
 @media only screen and (max-width: 1200px) {
 
+    /* Full-bleed below its 1140px fixed width, so it needs .row's side
+       padding to stay clear of the viewport edge. */
     .hero-text-box {
         width: 100%;
+        padding: 0 2%;
     }
 
     .row {
@@ -58,13 +51,9 @@
         margin: 0 0 4% 0;
     }
 
-    /* Two tiles per row: 49.2% + 1.6% gutter + 49.2% = 100%. */
-    .responsive-fix > .span-1-of-4 {
-        width: 49.2%;
-    }
-
-    .responsive-fix > .col + .col {
-        margin-left: 1.6%;
+    /* Two tiles per row: 49.2% + 1.6% gap + 49.2% = 100%. */
+    .tile-row > .col {
+        flex-basis: 49.2%;
     }
 
     .main-nav {
