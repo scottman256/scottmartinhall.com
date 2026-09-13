@@ -1,0 +1,174 @@
+/* Responsive overrides.
+   Loaded after style.css but before grid.css, so grid.css wins on .col sizing
+   at equal specificity — rules here that need to beat it are scoped tighter. */
+
+/* Each .responsive-fix wrapper holds two tiles so they pair up on phones, and
+   each one restarts grid.css's `.col:first-child { margin-left: 0 }`. Adding
+   the gutter back at the seam gives 4 x 23.8% + 3 x 1.6% = 100%. */
+@media only screen and (min-width: 768px) {
+
+    .responsive-fix + .responsive-fix > .col:first-child {
+        margin-left: 1.6%;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+
+    .hero-text-box {
+        width: 100%;
+    }
+
+    .row {
+        padding: 0 2%;
+    }
+}
+
+@media only screen and (max-width: 1023px) {
+
+    body {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+
+    body {
+        font-size: 16px;
+    }
+
+    section {
+        padding: 30px 0;
+    }
+
+    h1 {
+        font-size: 210%;
+    }
+
+    h2 {
+        font-size: 150%;
+    }
+
+    .row,
+    .hero-text-box {
+        padding: 0 4%;
+    }
+
+    .col {
+        width: 100%;
+        margin: 0 0 4% 0;
+    }
+
+    /* Two tiles per row: 49.2% + 1.6% gutter + 49.2% = 100%. */
+    .responsive-fix > .span-1-of-4 {
+        width: 49.2%;
+    }
+
+    .responsive-fix > .col + .col {
+        margin-left: 1.6%;
+    }
+
+    .main-nav {
+        float: left;
+        margin-top: 10px;
+        margin-left: 25px;
+    }
+
+    .main-nav li {
+        display: block;
+        border: 0;
+    }
+
+    .main-nav li a:link,
+    .main-nav li a:visited {
+        display: block;
+        border: 0;
+        padding: 3px 0;
+        font-size: 100%;
+    }
+
+    .sticky .main-nav {
+        margin-top: 10px;
+    }
+
+    .sticky .main-nav li a:link,
+    .sticky .main-nav li a:visited {
+        padding: 7px 0;
+    }
+
+    .scott {
+        display: block;
+        width: 200px;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .number {
+        height: 40px;
+        width: 40px;
+        padding: 3px;
+        font-size: 130%;
+        margin-right: 20px;
+    }
+
+    /* Countdown entry: rank badge and box art share the top line, title and
+       description take the full width beneath. */
+    .games .game-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        column-gap: 14px;
+    }
+
+    /* grid.css's .row clearfix would otherwise count as two flex items. */
+    .games .game-row::before,
+    .games .game-row::after {
+        display: none;
+    }
+
+    .games .game-row > .col {
+        width: auto;
+        margin: 0;
+    }
+
+    .games .game-row > .span-3-of-5 {
+        width: 100%;
+        margin-top: 12px;
+    }
+
+    .game-row .number {
+        float: none;
+        margin-right: 0;
+    }
+
+    .gamebox h3,
+    .whytop5 {
+        width: 100%;
+        float: none;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+
+    section {
+        padding: 25px 0;
+    }
+}
+
+/* The hero content is absolutely centred inside a 100vh header, so on a short
+   viewport the portrait has to shrink for it to fit. Gated on width as well as
+   height so short desktop windows keep the full-size portrait. */
+@media only screen and (max-width: 767px) and (max-height: 620px) {
+
+    .scott {
+        width: 180px;
+        height: auto;
+    }
+}
+
+@media only screen and (max-width: 767px) and (max-height: 450px) {
+
+    .scott {
+        width: 110px;
+    }
+}
