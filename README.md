@@ -33,8 +33,7 @@ dependencies. Deploy by copying the files to the web root.
   throttled passive scroll listener drives the sticky nav.
 - Social icons are inlined SVG; the two animations used are ~20 lines of local
   CSS. Both replaced third-party libraries (ionicons, animate.css).
-- The only external requests are the Lato webfont, the Codewars badge and
-  Google Analytics.
+- The only external requests are the Lato webfont and the Codewars badge.
 - Layout uses a small vendored float grid (`external-resources/css/grid.css`).
 
 ## Structure
@@ -59,7 +58,7 @@ Stylesheet load order is significant — `grid.css` is intentionally loaded afte
 ## Running locally
 
 No tooling required; open `index.html` in a browser. To exercise it over HTTP
-(so the manifest and analytics behave normally):
+(so the manifest behaves normally):
 
 ```bash
 npx serve .
@@ -67,7 +66,4 @@ npx serve .
 
 ## Notes
 
-- Analytics still uses a Universal Analytics property (`UA-164038466-1`).
-  Universal Analytics stopped processing data in July 2023, so this currently
-  collects nothing — it needs a GA4 Measurement ID (`G-XXXXXXX`) to work.
 - Icons by [Icons8](https://icons8.com).
