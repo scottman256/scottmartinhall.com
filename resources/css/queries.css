@@ -37,6 +37,13 @@
         font-size: 210%;
     }
 
+    /* The hero is absolutely centred in a 100vh header with the nav sitting
+       over its top ~85px, so its content has to stay short enough to clear
+       that. The leading <br> is desktop breathing room the phone can't spare. */
+    h1 br:first-child {
+        display: none;
+    }
+
     h2 {
         font-size: 150%;
     }
@@ -142,20 +149,45 @@
     section {
         padding: 25px 0;
     }
+
+    /* Tighter buttons so two hero actions still fit per line down to ~355px;
+       three stacked rows push the hero taller than the header can hold. */
+    .btn:link,
+    .btn:visited {
+        padding: 10px 18px;
+    }
 }
 
 /* The hero content is absolutely centred inside a 100vh header, so on a short
    viewport the portrait has to shrink for it to fit. Gated on width as well as
-   height so short desktop windows keep the full-size portrait. */
+   height so short desktop windows keep the full-size portrait.
+   The offset centres it in the space below the stacked nav (~85px tall) rather
+   than over the whole header, which it would otherwise collide with. */
 @media only screen and (max-width: 767px) and (max-height: 620px) {
 
+    .hero-text-box {
+        top: calc(50% + 42px);
+    }
+
     .scott {
-        width: 180px;
+        width: 130px;
         height: auto;
     }
 }
 
+/* Landscape phones. A stacked nav would claim most of a header this short, so
+   it goes back to a single row. */
 @media only screen and (max-width: 767px) and (max-height: 450px) {
+
+    .main-nav li {
+        display: inline-block;
+        margin-left: 20px;
+    }
+
+    /* Re-centred against the single-row nav, which is ~35px rather than ~85px. */
+    .hero-text-box {
+        top: calc(50% + 17px);
+    }
 
     .scott {
         width: 110px;
